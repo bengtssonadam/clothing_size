@@ -1,7 +1,6 @@
 import math
 from collections import Counter
 from sklearn.neighbors import KNeighborsClassifier
-
 import pandas as pd
 from sklearn.svm import SVC
 
