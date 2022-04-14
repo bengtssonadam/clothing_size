@@ -3,6 +3,7 @@ from collections import Counter
 from sklearn.neighbors import KNeighborsClassifier
 
 import pandas as pd
+from sklearn.svm import SVC
 
 
 class KNN:
@@ -44,6 +45,7 @@ def main():
     user_weight = int(input('Enter your weight in kg: '))
 
     user_data = (user_height, user_weight)
+    svc_X = list(zip(heights, weights))
 
     for k in (3, 5, 7, 9, 11, 99):
         knn = KNN(k)
@@ -60,6 +62,10 @@ def main():
 
         predicted = clf_knn.predict([user_data])
         print("sklearn's knn prediction is: ", predicted[0])
+
+        svc = SVC(kernel='linear')
+        svc.fit(svc_X, y)
+        print(f'SVM prediction is: {svc.predict([[user_height, user_weight]])}')
 
         print('*'*40)
 
